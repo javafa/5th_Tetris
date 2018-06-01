@@ -135,11 +135,13 @@ public class BlockFactory {
     };
 
     public static Block newBlock() {
-        Random random = new Random();
-        int index = random.nextInt(7);
-
+        int index = getRandom();
         int block[][][] = blocks[index];
+        return new Block(block, index);
+    }
 
-        return new Block(block);
+    public static int getRandom(){
+        Random random = new Random();
+        return random.nextInt(7);
     }
 }

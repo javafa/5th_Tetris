@@ -8,6 +8,7 @@ public class Stage {
     float unit;
     int top, left;
     Paint grid, wall, temp;
+    Block block;
 
     int stage_map[][] = {
             {9,0,0,0,0,0,0,0,0,0,0,9},
@@ -42,11 +43,13 @@ public class Stage {
         grid.setStrokeWidth(3);
 
         wall = new Paint();
-        wall.setColor(Color.BLUE);
+        wall.setColor(Color.BLACK);
         wall.setStyle(Paint.Style.FILL_AND_STROKE);
     }
     // 호출되면 그림을 그린다.
     public void onDraw(Canvas canvas){
+        // 블럭 그리기
+        block.onDraw(canvas);
         // 스테이지 그리기
         for(int y=0; y<stage_map.length; y++){
             for(int x=0; x<stage_map[0].length; x++){
@@ -75,5 +78,12 @@ public class Stage {
                 );
             }
         }
+    }
+
+    public void setBlock(Block block) {
+        this.block = block;
+        this.block.x = 4;
+        this.block.y = 0;
+        this.block.unit = unit;
     }
 }

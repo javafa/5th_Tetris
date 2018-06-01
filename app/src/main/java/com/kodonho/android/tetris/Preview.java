@@ -8,6 +8,7 @@ public class Preview {
     float unit;
     int top, left;
     Paint grid;
+    Block block;
     int preview_map[][] = {
             {0,0,0,0},
             {0,0,0,0},
@@ -26,6 +27,8 @@ public class Preview {
     }
 
     public void onDraw(Canvas canvas) {
+        // 프리뷰안의 블럭 그리기
+        block.onDraw(canvas, left);
         // 프리뷰 그리기
         for(int y=0; y<preview_map.length; y++){
             for(int x=0; x<preview_map[0].length; x++){
@@ -40,5 +43,14 @@ public class Preview {
                 );
             }
         }
+    }
+
+    public void setBlock(Block block) {
+        this.block = block;
+        block.setUnit(unit);
+    }
+
+    public Block getBlock() {
+        return block;
     }
 }

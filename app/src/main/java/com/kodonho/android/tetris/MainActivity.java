@@ -33,5 +33,22 @@ public class MainActivity extends AppCompatActivity {
         preview = new Preview(unit, 0, 13);
         screen = new Screen(this, stage, preview);
         layout.addView(screen);
+
+        // 새로운 블럭을 세팅
+        setNewBlock();
+        // 프리뷰에 세팅된 블럭을 스테이지로 이동
+        moveBlockToStage();
+    }
+
+    public void setNewBlock(){
+        Block newBlock = BlockFactory.newBlock();
+        preview.setBlock(newBlock);
+    }
+
+    public void moveBlockToStage(){
+        Block block = preview.getBlock();
+        stage.setBlock(block);
+        setNewBlock();
+        screen.invalidate();
     }
 }
