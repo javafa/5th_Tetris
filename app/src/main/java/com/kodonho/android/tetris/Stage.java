@@ -86,4 +86,17 @@ public class Stage {
         this.block.y = 0;
         this.block.unit = unit;
     }
+
+    public void down() {
+        block.down();
+    }
+    public void rotate() {
+        block.rotate();
+    }
+    public void left() {
+        block.left();
+    }
+    public void right(){
+        block.right();
+    }
 }
