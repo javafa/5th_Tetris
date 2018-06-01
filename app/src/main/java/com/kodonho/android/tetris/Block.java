@@ -6,7 +6,7 @@ import android.graphics.Paint;
 import android.util.Log;
 
 public class Block {
-    int colors[] = {
+    public static final int colors[] = {
         Color.RED, Color.GREEN, Color.BLUE, Color.CYAN, Color.MAGENTA, Color.YELLOW, Color.parseColor("#FF00FF") // 얘가 보라색
     };
 
@@ -29,6 +29,10 @@ public class Block {
         this.paint_index = index;
         paint = new Paint();
         paint.setColor(colors[index]);
+    }
+
+    public int[][] currentBlock(){
+        return block[rotation];
     }
 
     public void rotate(){

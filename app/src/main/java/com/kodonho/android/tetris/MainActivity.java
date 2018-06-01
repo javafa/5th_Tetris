@@ -6,7 +6,8 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.FrameLayout;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity
+    implements View.OnClickListener,Stage.Controll {
 
     float displayWidth;
     FrameLayout layout;
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         layout = findViewById(R.id.layout);
         // 스테이지와 프리뷰를 생성해서 스크린 클래스에 담아준다
-        stage = new Stage(unit, 0, 0);
+        stage = new Stage(unit, 0, 0, this);
         preview = new Preview(unit, 0, 13);
         screen = new Screen(this, stage, preview);
         layout.addView(screen);
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         preview.setBlock(newBlock);
     }
 
+    @Override
     public void moveBlockToStage(){
         Block block = preview.getBlock();
         stage.setBlock(block);
