@@ -46,6 +46,8 @@ public class MainActivity extends AppCompatActivity
         setNewBlock();
         // 프리뷰에 세팅된 블럭을 스테이지로 이동
         moveBlockToStage();
+        // 동작시작
+        runThread();
     }
 
     public void setNewBlock(){
@@ -78,5 +80,28 @@ public class MainActivity extends AppCompatActivity
                 break;
         }
         screen.invalidate();
+    }
+
+    boolean runFlag = true;
+    public void runThread(){
+        new Thread(){
+            @Override
+            public void run(){
+                while(runFlag) {
+                    try {
+                        Thread.sleep(1000);
+                        stage.down();
+                        screen.invalidate();
+                    } catch (Exception e) {
+                    }
+                }
+            }
+        }.start();
+    }
+
+    @Override
+    protected void onDestroy() {
+        runFlag = false;
+        super.onDestroy();
     }
 }
