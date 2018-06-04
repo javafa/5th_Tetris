@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity
         Block block = preview.getBlock();
         stage.setBlock(block);
         setNewBlock();
-        screen.invalidate();
+        screen.postInvalidate();
     }
 
     @Override
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity
                     try {
                         Thread.sleep(1000);
                         stage.down();
-                        screen.invalidate();
+                        screen.postInvalidate();
                     } catch (Exception e) {
                     }
                 }
